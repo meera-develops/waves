@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import Callback from './screens/Callback';
+import CurrentlyPlaying from './screens/CurrentlyPlaying';
 
 const linking = {
   prefixes: ['http://localhost:8081', 'yourapp://'], // Add your app's URI prefix here
@@ -14,6 +15,7 @@ const linking = {
       Welcome: 'welcome',
       Home: 'home',
       Callback: 'callback', // Ensure the callback route matches your expectation
+      CurrentlyPlaying: 'currently-playing',
       // Define other screens as needed
     },
   },
@@ -60,6 +62,14 @@ export default function App() {
           },
           headerTintColor: "#2f4858",
           headerTintStyle: { fontWeight: 'bold'},
+        }} />
+        <Tab.Screen name="CurrentlyPlaying" component={CurrentlyPlaying}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FCDDBC"
+          },
+          headerTintColor: "#FFFFFF",
+          headerTintStyle: {fontWeight: "bold"},
         }} />
         <Tab.Screen name="Callback" component={Callback} />
       </Tab.Navigator>
