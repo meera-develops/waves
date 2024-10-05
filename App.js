@@ -32,6 +32,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const [loaded, error] = useFonts({
     'lexend-era': require('./assets/fonts/Lexend_Exa/static/LexendExa-Light.ttf'),
+    'metrophobic': require('./assets/fonts/Metrophobic/Metrophobic-Regular.ttf')
   });
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function App() {
 
 
 
-  return (
+  return ( 
     <NavigationContainer linking={linking}>
       <Tab.Navigator
         screenOptions={{
@@ -55,7 +56,6 @@ export default function App() {
             backgroundColor: '#2f4858',
           },
           headerTitleAlign: "center",
-          //tabBarStyle: { display: 'none' }, // Hide tab bar on Welcome screen
         }}
       >
         <Tab.Screen 
@@ -74,6 +74,7 @@ export default function App() {
              fontSize: 30,
            },
           headerTintStyle: { fontWeight: 'bold'},
+          tabBarStyle: { display: 'none' }
         }}
         />
         <Tab.Screen name="Home" component={HomeScreen}
@@ -84,12 +85,12 @@ export default function App() {
           headerTintColor: "#2f4858",
           headerTintStyle: { fontWeight: 'bold'},
         }} />
-        <Tab.Screen name="CurrentlyPlaying" component={CurrentlyPlaying}
+        <Tab.Screen name="Currently Playing" component={CurrentlyPlaying}
         options={{
           headerStyle: {
             backgroundColor: "#FCDDBC"
           },
-          headerTintColor: "#FFFFFF",
+          headerTintColor: "#2f4858",
           headerTintStyle: {fontWeight: "bold"},
         }} />
         <Tab.Screen name="Callback" component={Callback} />
