@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 import { client_id, redirect_uri } from '@env';
 const clientId = client_id;
 const redirectURI = redirect_uri
+=======
+
+
+import { client_id } from '@env';
+
+const clientId = client_id;
+const redirectURI = 'http://localhost:8081/'
+>>>>>>> 566e7ca (Commiting json)
 const authURL = new URL('https://accounts.spotify.com/authorize')
 
 const scope = 'user-read-private user-read-email';
@@ -29,7 +38,11 @@ async function PKCE_func() {
           .replace(/\//g, '_');
     }
 
+<<<<<<< HEAD
     const hashed = await sha256(codeVerifier)
+=======
+    const hashed = sha256(codeVerifier)
+>>>>>>> 566e7ca (Commiting json)
     const codeChallenge = base64encode(hashed);
 
 
@@ -38,7 +51,11 @@ async function PKCE_func() {
     return codeChallenge;
 }
 
+<<<<<<< HEAD
 async function redirectToSpotify(codeChallenge) {
+=======
+async function getAuthCode(codeChallenge) {
+>>>>>>> 566e7ca (Commiting json)
     try {
         const params = {
             response_type: 'code',
@@ -51,6 +68,7 @@ async function redirectToSpotify(codeChallenge) {
         authURL.search = new URLSearchParams(params).toString();
         window.location.href = authURL.toString();
 
+<<<<<<< HEAD
     } catch(err) {
         console.error('Failed to get redirect to Spotify. ', err);
     }
@@ -60,6 +78,10 @@ export async function getAuthCode() {
     try {
         const UrlParams = new URLSearchParams(window.location.search);
         let code = UrlParams.get('code');
+=======
+        constUrlParams = new URLSearchParams(window.location.search);
+        let code = urlParams.get('code');
+>>>>>>> 566e7ca (Commiting json)
 
         return code;
 
@@ -68,11 +90,19 @@ export async function getAuthCode() {
     }
 }
 
+<<<<<<< HEAD
 export async function getAccessToken(code) {
     try {
         let codeVerifier = localStorage.getItem('code_verifier');
 
         const response = await fetch('https://accounts.spotify.com/api/token',{
+=======
+async function getAccessToken(code) {
+    try {
+        let codeVerifier = localStorage.getItem('code_verifier');
+
+        const body = await fetch ({
+>>>>>>> 566e7ca (Commiting json)
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -86,6 +116,7 @@ export async function getAccessToken(code) {
             }),
         });
 
+<<<<<<< HEAD
         let data = await response.json();
 
         if (data.error) {
@@ -93,16 +124,35 @@ export async function getAccessToken(code) {
         }
 
         return data.access_token;
+=======
+        const response = await body.json();
+        return response.access_token;
+>>>>>>> 566e7ca (Commiting json)
     } catch (err) {
         console.error('Access token could not be retrieved.', err)
     }
 }
 
+<<<<<<< HEAD
 export default async function userLogin() {
 
     const codeChallenge = await PKCE_func();
 
     redirectToSpotify(codeChallenge);
+=======
+export async function userLogin() {
+
+    const codeChallenge = PKCE_func();
+
+    let code = await getAuthCode(codeChallenge);
+
+    let token = await getAccessToken(code);
+
+    localStorage.setItem('access_token', token);
+      
+    const data = await response.json();
+    console.log(data);
+>>>>>>> 566e7ca (Commiting json)
 }
 
 
