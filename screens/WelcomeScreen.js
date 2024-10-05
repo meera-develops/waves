@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import userLogin from '../spotify-api/auth.js';
-
-
+import background from '../assets/images/bgImage.jpg';
 
 
 const WelcomeScreen = () => {
     return (
-        <View style={styles.container}>
-            <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
-              <Text style={styles.buttons}>
-                Log in with Spotify
-              </Text>
-            </TouchableOpacity>
-        </View>
+        <ImageBackground
+            source={background}
+            style={styles.background}
+        >
+            <View style={styles.container}>
+                <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
+                <Text style={styles.buttons}>
+                    Log in with Spotify
+                </Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
+
     );
 };
 
@@ -23,6 +28,13 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    background: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
+        justifyContent: 'center',
     },
     buttonContainer: {
         top: 140,

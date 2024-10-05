@@ -63,14 +63,14 @@ export default function App() {
           title: "Waves",
           headerStyle: {
             backgroundColor: "#fcddbc",
-          },
-          headerTitleStyle: {
-            color: "#2f4858",
-            fontFamily: 'lexend-era',
-            textTransform: 'uppercase',
-            letterSpacing: 5,
-            fontSize: 30,
-          },
+           },
+           headerTitleStyle: {
+             color: "#2f4858",
+             fontFamily: 'lexend-era',
+             textTransform: 'uppercase',
+             letterSpacing: 5,
+             fontSize: 30,
+           },
           headerTintStyle: { fontWeight: 'bold'},
         }}
         />
