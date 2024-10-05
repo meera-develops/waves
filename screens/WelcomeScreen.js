@@ -4,6 +4,7 @@ import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
 
 
+
 const WelcomeScreen = () => {
     return (
         <ImageBackground
@@ -11,6 +12,7 @@ const WelcomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
+
                 <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
                 <Text style={styles.buttons}>
                     Log in with Spotify
@@ -35,6 +37,9 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover',
         justifyContent: 'center',
+    },
+    wave: {
+        alignSelf: 'center'
     },
     buttonContainer: {
         top: 140,
