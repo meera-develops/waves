@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
+import wave from '../assets/images/waveLight.png';
 
 
 
@@ -12,7 +13,10 @@ const WelcomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
-
+                <Image 
+                    source={wave}
+                    style={styles.wave}
+                />
                 <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
                 <Text style={styles.buttons}>
                     Log in with Spotify
