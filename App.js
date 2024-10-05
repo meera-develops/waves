@@ -74,7 +74,7 @@ export default function App() {
              fontSize: 30,
            },
           headerTintStyle: { fontWeight: 'bold'},
-          //tabBarStyle: { display: 'none' }
+          tabBarStyle: { display: 'none' }
         }}
         />
         <Tab.Screen name="Home" component={HomeScreen}
