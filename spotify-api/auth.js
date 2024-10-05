@@ -92,7 +92,7 @@ export async function getAccessToken(code) {
             throw new Error('Invalid credentials');
         }
 
-        return data.access_token;
+        return data;
     } catch (err) {
         console.error('Access token could not be retrieved.', err)
     }
