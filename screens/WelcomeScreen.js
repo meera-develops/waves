@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import userLogin from '../spotify-api/auth.js';
+
+
+
 
 const WelcomeScreen = () => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.buttonContainer}>
+            <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
               <Text style={styles.buttons}>
-                Log in
+                Log in with Spotify
               </Text>
             </TouchableOpacity>
         </View>
