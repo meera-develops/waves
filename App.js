@@ -1,12 +1,17 @@
 import * as React from 'react';
-//import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import Callback from './screens/Callback';
 import CurrentlyPlaying from './screens/CurrentlyPlaying';
+
+SplashScreen.preventAutoHideAsync();
+
 
 const linking = {
   prefixes: ['http://localhost:8081', 'yourapp://'], // Add your app's URI prefix here
@@ -25,16 +30,31 @@ const linking = {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [loaded, error] = useFonts({
+    'lexend-era': require('./assets/fonts/Lexend_Exa/static/LexendExa-Light.ttf'),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
+
+
   return (
     <NavigationContainer linking={linking}>
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: '#87bcde', // Color when active
-          tabBarInactiveTintColor: '#fff', // Color when inactive
+          tabBarActiveTintColor: '#87bcde',
           tabBarStyle: {
-            backgroundColor: '#2f4858', // Background color of the tab bar
+            backgroundColor: '#2f4858',
           },
-          headerTitleAlign: "center", // Center the title
+          headerTitleAlign: "center",
           //tabBarStyle: { display: 'none' }, // Hide tab bar on Welcome screen
         }}
       >
@@ -45,13 +65,14 @@ export default function App() {
           title: "Waves",
           headerStyle: {
             backgroundColor: "#fcddbc",
-          },
-          headerTitleStyle: {
-            color: "#2f4858",
-            textTransform: 'uppercase',
-            letterSpacing: 5,
-            fontSize: 30
-          },
+           },
+           headerTitleStyle: {
+             color: "#2f4858",
+             fontFamily: 'lexend-era',
+             textTransform: 'uppercase',
+             letterSpacing: 5,
+             fontSize: 30,
+           },
           headerTintStyle: { fontWeight: 'bold'},
         }}
         />
