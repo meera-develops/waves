@@ -1,5 +1,5 @@
 import * as React from 'react';
-//import { Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,16 +25,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={heroScreenImg}
-        style={styles.heroImg}
-      >
         <Text style={styles.heroText}>WAVE</Text>
-
-        <Image
-          source={turntable}
-          style={styles.turntableImg}
-        />
 
         <Text style={styles.header}>
           Find your <Text style={styles.subtitle}> W a v e</Text>
@@ -45,7 +36,6 @@ export default function App() {
             Login with Spotify
           </Text>
         </TouchableOpacity>
-      </ImageBackground>
     </View>
   );
 };
@@ -61,13 +51,11 @@ const styles = StyleSheet.create({
     color: 'blue',
   }
 });
-=======
-    <NavigationContainer>
+
+  <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Welcome" component={WelcomeScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
       </Tab.Navigator>
     </NavigationContainer>
-  );
-}
->>>>>>> d21cd4d (app.js)
+
