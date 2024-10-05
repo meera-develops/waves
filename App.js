@@ -47,7 +47,7 @@ export default function App() {
 
 
 
-  return (
+  return ( 
     <NavigationContainer linking={linking}>
       <Tab.Navigator
         screenOptions={{
@@ -56,7 +56,6 @@ export default function App() {
             backgroundColor: '#2f4858',
           },
           headerTitleAlign: "center",
-          //tabBarStyle: { display: 'none' }, // Hide tab bar on Welcome screen
         }}
       >
         <Tab.Screen 
@@ -75,6 +74,7 @@ export default function App() {
              fontSize: 30,
            },
           headerTintStyle: { fontWeight: 'bold'},
+          //tabBarStyle: { display: 'none' }
         }}
         />
         <Tab.Screen name="Home" component={HomeScreen}
