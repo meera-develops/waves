@@ -78,8 +78,16 @@ export default function App() {
         />
         <Tab.Screen name="Home" component={HomeScreen}
         options={{
+          title: "Waves",
           headerStyle: {
             backgroundColor: "#fcddbc",
+          },
+          headerTitleStyle: {
+            color: "#2f4858",
+            fontFamily: 'lexend-era',
+            textTransform: 'uppercase',
+            letterSpacing: 5,
+            fontSize: 30,
           },
           headerTintColor: "#2f4858",
           headerTintStyle: { fontWeight: 'bold'},
