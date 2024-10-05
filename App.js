@@ -22,19 +22,9 @@ const linking = {
 
 const Tab = createBottomTabNavigator();
 
-const HomeScreen = ({ navigation }) => {
-
-  const CLIENT_ID = "";
-  const REDIRECT_URI = "http://localhost:8081/";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
-
-  const handleSpotifyLogin = () => {
-    const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
-    Linking.openURL(authUrl); // Open the Spotify login page
-  };
-
+export default function App() {
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <NavigationContainer linking={linking}>
       <Tab.Navigator
@@ -122,3 +112,13 @@ const styles = StyleSheet.create({
   }
 });
 >>>>>>> d75d9f6 (Commiting files)
+=======
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Welcome" component={WelcomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+>>>>>>> d21cd4d (app.js)
