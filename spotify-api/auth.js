@@ -1,9 +1,6 @@
-
-
-import { client_id } from '@env';
-
+import { client_id, redirect_uri } from '@env';
 const clientId = client_id;
-const redirectURI = 'http://localhost:8081/'
+const redirectURI = redirect_uri
 const authURL = new URL('https://accounts.spotify.com/authorize')
 
 const scope = 'user-read-private user-read-email';
@@ -32,7 +29,7 @@ async function PKCE_func() {
           .replace(/\//g, '_');
     }
 
-    const hashed = sha256(codeVerifier)
+    const hashed = await sha256(codeVerifier)
     const codeChallenge = base64encode(hashed);
 
 
@@ -41,7 +38,7 @@ async function PKCE_func() {
     return codeChallenge;
 }
 
-async function getAuthCode(codeChallenge) {
+async function redirectToSpotify(codeChallenge) {
     try {
         const params = {
             response_type: 'code',
@@ -54,8 +51,15 @@ async function getAuthCode(codeChallenge) {
         authURL.search = new URLSearchParams(params).toString();
         window.location.href = authURL.toString();
 
-        constUrlParams = new URLSearchParams(window.location.search);
-        let code = urlParams.get('code');
+    } catch(err) {
+        console.error('Failed to get redirect to Spotify. ', err);
+    }
+}
+
+export async function getAuthCode() {
+    try {
+        const UrlParams = new URLSearchParams(window.location.search);
+        let code = UrlParams.get('code');
 
         return code;
 
@@ -64,11 +68,11 @@ async function getAuthCode(codeChallenge) {
     }
 }
 
-async function getAccessToken(code) {
+export async function getAccessToken(code) {
     try {
         let codeVerifier = localStorage.getItem('code_verifier');
 
-        const body = await fetch ({
+        const response = await fetch('https://accounts.spotify.com/api/token',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -82,25 +86,23 @@ async function getAccessToken(code) {
             }),
         });
 
-        const response = await body.json();
-        return response.access_token;
+        let data = await response.json();
+
+        if (data.error) {
+            throw new Error('Invalid credentials');
+        }
+
+        return data.access_token;
     } catch (err) {
         console.error('Access token could not be retrieved.', err)
     }
 }
 
-export async function userLogin() {
+export default async function userLogin() {
 
-    const codeChallenge = PKCE_func();
+    const codeChallenge = await PKCE_func();
 
-    let code = await getAuthCode(codeChallenge);
-
-    let token = await getAccessToken(code);
-
-    localStorage.setItem('access_token', token);
-      
-    const data = await response.json();
-    console.log(data);
+    redirectToSpotify(codeChallenge);
 }
 
 
