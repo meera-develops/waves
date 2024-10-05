@@ -4,7 +4,14 @@ import { ImageBackground } from 'react-native-web';
 import background from '../assets/images/bgImage.jpg';
 import CurrentlyPlaying from './CurrentlyPlaying';
 
+/* To Do:
+1. Get user name to show up in text region
+2. Get buttons to redirect to other pages
+3. Add icons to buttons
+*/
+
 const HomeScreen = () => {
+    {/* This is where it's going to redirect to currently playing page and other pages: */}
     const buttonAction = () => {
         Alert.alert("Notice:","This is where redirect to currently playing will occur");
     };
@@ -21,8 +28,9 @@ const HomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
-                {/* <Text>Text was here. maybe put user name here and move it to the top of the screen</Text> */}
-                {/* This is where it's going to redirect to currently playing page: */}
+                <Text style={styles.accountText}>
+                    user_name placeholder
+                </Text>
                 <TouchableOpacity onPress={() => buttonAction()} style={styles.buttonContainer}>
                 <Text style={styles.buttons}>
                     VISIT YOUR TIDE POOL
@@ -59,20 +67,41 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonContainer: {
-        top:20,
+        //top:20,
         backgroundColor: '#CAEAFE',
         borderColor: '#CAEAFE',
         padding: 25,
         marginHorizontal: 25,
         marginVertical: 10,
-        alignItems: 'stretch',
+        alignItems: 'center',
         borderRadius: 5,
         borderWidth: 2,
+        width: 280,
+        height: 130,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {width:0, height:2},
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 5,
       },
       buttons: {
         color: '#433D8B',
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    accountText: {
+        width: '100%',
+        textAlign: 'left',
+        color: "#2f4858",
+        fontFamily: 'lexend-era',
+        textTransform: 'uppercase',
+        letterSpacing: 5,
+        fontSize: 10,
+        marginBottom: 20,
+        paddingLeft: 20,
     }
 });
 
