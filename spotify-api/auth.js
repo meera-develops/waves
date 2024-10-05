@@ -4,7 +4,6 @@ const clientId = client_id;
 const redirectURI = redirect_uri
 =======
 
-
 import { client_id } from '@env';
 
 const clientId = client_id;

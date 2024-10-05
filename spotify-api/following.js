@@ -5,143 +5,79 @@ const response = await fetch('https://api.spotify.com/v1/me', {
     }
 });
 
-// checks if user follows artist or another user
-async function following() {
-    try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
-            headers: {
-            Authorization: 'Bearer ' + token
-            }
-        });
-
-        if (!response.ok) {
-            if (response.status === 401) {
-                // Bad or expired token
-                
-            } 
-            else if (response.status === 403) {
-                // Bad Oauth request
-            }
-
-            else if (response.status === 429) {
-                // app exceeded limits
-            } 
-            else {
-                // encountered unknown error
-            }
-        }
-
-        let data = await response.json();
-
-        localStorage.setItem('type', data.type);
-        localStorage.setItem('user_id', data.id);
-    } catch(err) {
-        console.error()
+// function to handle errors
+function handleErrors(response) {
+    if (response.status === 401) {
+        console.error('Bad or expired token');
+    } else if (response.status === 403) {
+        console.error('Bad OAuth request');
+    } else if (response.status === 429) {
+        console.error('Rate limit exceeded');
+    } else {
+        console.error('Unknown error occurred');
     }
 }
 
-// checks if user unfollows artist or another user
-async function unfollowing() {
+
+// following artist or another user
+async function followArtistOrUser(type, ids) {
     try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
+        const response = await fetch(`https://api.spotify.com/v1/me/following?type=${type}`, {
+            method: 'PUT',
             headers: {
-            Authorization: 'Bearer ' + token
-            }
+                Authorization: 'Bearer ' + userTok,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ids: ids }) // ids should be an array of artist/user IDs
         });
 
         if (!response.ok) {
-            if (response.status === 401) {
-                // Bad or expired token
-                
-            } 
-            else if (response.status === 403) {
-                // Bad Oauth request
-            }
-
-            else if (response.status === 429) {
-                // app exceeded limits
-            } 
-            else {
-                // encountered unknown error
-            }
+            handleErrors(response);
         }
-
-        let data = await response.json();
-
-        localStorage.setItem('type', data.type);
-        localStorage.setItem('user_id', data.id);
-    } catch(err) {
-        console.error()
+    } catch (err) {
+        console.error(err);
     }
 }
+
+
+//  unfollows artist or another user
+async function unfollowArtistOrUser(type, ids) {
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/me/following?type=${type}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + userTok,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ids: ids }) // ids should be an array of artist/user IDs
+        });
+
+        if (!response.ok) {
+            handleErrors(response);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 
 // checks if user follows artist or another user
-async function following() {
+async function isFollowing(type, ids) {
     try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
+        const response = await fetch(`https://api.spotify.com/v1/me/following/contains?type=${type}&ids=${ids.join(',')}`, {
+            method: 'GET',
             headers: {
-            Authorization: 'Bearer ' + token
+                Authorization: 'Bearer ' + userTok,
             }
         });
 
         if (!response.ok) {
-            if (response.status === 401) {
-                // Bad or expired token
-                
-            } 
-            else if (response.status === 403) {
-                // Bad Oauth request
-            }
-
-            else if (response.status === 429) {
-                // app exceeded limits
-            } 
-            else {
-                // encountered unknown error
-            }
+            handleErrors(response);
         }
 
-        let data = await response.json();
-
-        localStorage.setItem('type', data.type);
-        localStorage.setItem('user_id', data.id);
-    } catch(err) {
-        console.error()
+        const data = await response.json();
+        return data; // returns an array of boolean values
+    } catch (err) {
+        console.error(err);
     }
-}
-
-// checks if user unfollows artist or another user
-async function unfollowing() {
-    try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
-            headers: {
-            Authorization: 'Bearer ' + token
-            }
-        });
-
-        if (!response.ok) {
-            if (response.status === 401) {
-                // Bad or expired token
-                
-            } 
-            else if (response.status === 403) {
-                // Bad Oauth request
-            }
-
-            else if (response.status === 429) {
-                // app exceeded limits
-            } 
-            else {
-                // encountered unknown error
-            }
-        }
-
-        let data = await response.json();
-
-        localStorage.setItem('type', data.type);
-        localStorage.setItem('user_id', data.id);
-    } catch(err) {
-        console.error()
-    }
-
 }
