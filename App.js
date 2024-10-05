@@ -22,8 +22,20 @@ const linking = {
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+const HomeScreen = ({ navigation }) => {
+
+  const CLIENT_ID = "";
+  const REDIRECT_URI = "http://localhost:8081/";
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const RESPONSE_TYPE = "token";
+
+  const handleSpotifyLogin = () => {
+    const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`;
+    Linking.openURL(authUrl); // Open the Spotify login page
+  };
+
   return (
+<<<<<<< HEAD
     <NavigationContainer linking={linking}>
       <Tab.Navigator
         screenOptions={{
@@ -64,11 +76,49 @@ export default function App() {
         <Tab.Screen name="Callback" component={Callback} />
       </Tab.Navigator>
     </NavigationContainer>
+=======
+    <View style={styles.container}>
+      <ImageBackground
+        source={heroScreenImg}
+        style={styles.heroImg}
+      >
+        <Text style={styles.heroText}>WAVE</Text>
+
+        <Image
+          source={turntable}
+          style={styles.turntableImg}
+        />
+
+        <Text style={styles.header}>
+          Find your <Text style={styles.subtitle}> W a v e</Text>
+        </Text>
+
+        <TouchableOpacity onPress={handleSpotifyLogin} style={styles.buttonContainer}>
+          <Text style={styles.buttons}>
+            Login with Spotify
+          </Text>
+        </TouchableOpacity>
+      </ImageBackground>
+    </View>
+>>>>>>> d75d9f6 (Commiting files)
   );
 };
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   bottomTab: {
     color: '#2f4858'
   }
 })
+=======
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    color: 'blue',
+  }
+});
+>>>>>>> d75d9f6 (Commiting files)
