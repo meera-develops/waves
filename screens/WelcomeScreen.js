@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ImageBackground, Image } from 'react-native';
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
 import wave from '../assets/images/waveLight.png';
@@ -20,11 +20,11 @@ const WelcomeScreen = () => {
                 <Text style={styles.cta}>
                     Ready to dive into the deep end?
                 </Text>
-                <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
+                <Pressable onPress={() => userLogin()} style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>
                     Log in
                 </Text>
-                </TouchableOpacity>
+                </Pressable>
             </View>
         </ImageBackground>
 
