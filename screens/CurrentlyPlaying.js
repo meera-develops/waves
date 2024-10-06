@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import background from '../assets/images/bgImage.jpg';
+import { ImageBackground } from 'react-native-web';
 
 
 const CurrentlyPlaying = () => {
     return (
       <ImageBackground
-        source={background}
-        style={styles.background}
+        source = {background}
+        style = {style.background}
       >
         <View style={styles.container}>
-          <Text>This will be the currently playing screen</Text>
+          <Text style={styles.text}>YOUR TIDE POOL</Text>
+          <Text style={styles.text}>user_name</Text>
+          <Text style={styles.text}>Your rating</Text>
         </View>
-
       </ImageBackground>
     );
   };
@@ -21,15 +23,10 @@ const CurrentlyPlaying = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    background: {
-      flex: 1,
-      width: '100%',
-      height: '100%',
-      resizeMode: 'cover',
-      justifyContent: 'center',
+      marginTop: 50,
+      backgroundColor: '#FCDDBC',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
     },
     text: {
       color: 'black'
