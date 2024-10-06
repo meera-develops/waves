@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchBar: {
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
