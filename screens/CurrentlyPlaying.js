@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { ImageBackground, StyleSheet, Image, Text, View, SafeAreaView } from 'react-native';
 import background from '../assets/images/bgImage.jpg';
 import userPic from '../assets/images/userPic.jpg';
 import searchIcon from '../assets/images/searchIcon.png';
+
 
 
 const CurrentlyPlaying = () => {
@@ -29,7 +31,6 @@ const CurrentlyPlaying = () => {
 
         </ImageBackground>
       </SafeAreaView>
-
     );
   };
 
