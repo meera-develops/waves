@@ -116,8 +116,9 @@ export default function App() {
           headerStyle: {
             backgroundColor: "#FCDDBC"
           },
-          headerTintColor: "#2f4858",
-          headerTintStyle: {fontWeight: "bold"},
+          headerShown: false,
+          //headerTintColor: "#2f4858",
+          //headerTintStyle: {fontWeight: "bold"},
         }} />
 
       </Tab.Navigator>
