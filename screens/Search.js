@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 20,
     backgroundColor: '#fff',
+    elevation: 5
   },
   searchInput: {
     flex: 1,
