@@ -93,13 +93,20 @@ export default function App() {
           headerTintColor: "#2f4858",
           headerTintStyle: { fontWeight: 'bold'},
         }} />
-        <Tab.Screen name="Currently Playing" component={CurrentlyPlaying}
+        <Tab.Screen name="YOUR TIDE POOL" component={CurrentlyPlaying}
         options={{
           headerStyle: {
             backgroundColor: "#FCDDBC"
           },
-          headerTintColor: "#2f4858",
+          headerTitleStyle: {
+            color: "#fff",
+            fontFamily: 'lexend-era',
+            textTransform: 'uppercase',
+            letterSpacing: 5,
+            fontSize: 30,
+          },
           headerTintStyle: {fontWeight: "bold"},
+          tabBarLabel: 'Listening'
         }} />
         <Tab.Screen name="Callback" component={Callback} />
       </Tab.Navigator>
