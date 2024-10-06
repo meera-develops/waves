@@ -5,7 +5,7 @@ import wave from '../assets/images/waveLight.png';
 import starboyCover from '../assets/images/starboy.jpg';
 import artist1 from '../assets/images/artist1.jpg';
 import artist2 from '../assets/images/artist2.jpg';
-import { Iconify } from 'react-native-iconify';
+// import { Iconify } from 'react-native-iconify';
 
 const discover = () => {
     return (
@@ -14,9 +14,9 @@ const discover = () => {
             <Image source={wave} style={styles.wave} />
             <Text style={styles.subHeader}>This tide is making waves!</Text>
 
-            <View style = {styles.iconImage}>
+            {/* <View style = {styles.iconImage}>
                 <Iconify icon = "playButton" size={10} color = "black" />
-            </View>
+            </View> */}
 
             {/* Starboy Album Section */}
             <View style={styles.albumSection}>

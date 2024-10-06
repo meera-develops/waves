@@ -10,6 +10,8 @@ import HomeScreen from './screens/HomeScreen';
 import Callback from './screens/Callback';
 import CurrentlyPlaying from './screens/CurrentlyPlaying';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import discover from './screens/discover';
+
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -23,6 +25,7 @@ const linking = {
       Home: 'home',
       Callback: 'callback', // Ensure the callback route matches your expectation
       CurrentlyPlaying: 'currently-playing',
+      discover: 'discover',
       // Define other screens as needed
     },
   },
@@ -104,6 +107,7 @@ export default function App() {
           headerTintStyle: {fontWeight: "bold"},
         }} />
         <Tab.Screen name="Callback" component={Callback} />
+        <Tab.Screen name="discover" component={discover} />
       </Tab.Navigator>
     </NavigationContainer>
   );
