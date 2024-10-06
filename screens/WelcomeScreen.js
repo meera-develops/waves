@@ -1,5 +1,9 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+=======
+import { View, Text, StyleSheet, Pressable, ImageBackground, Image } from 'react-native';
+>>>>>>> 465307b9e03c3e2b0bb4fa13a4ae05c0a4a63c5c
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
 
@@ -10,12 +14,25 @@ const WelcomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
+<<<<<<< HEAD
 
                 <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
                 <Text style={styles.buttons}>
                     Log in with Spotify
+=======
+                <Image 
+                    source={wave}
+                    style={styles.wave}
+                />
+                <Text style={styles.cta}>
+                    Ready to dive into the deep end?
                 </Text>
-                </TouchableOpacity>
+                <Pressable onPress={() => userLogin()} style={styles.buttonContainer}>
+                <Text style={styles.buttonText}>
+                    Log in
+>>>>>>> 465307b9e03c3e2b0bb4fa13a4ae05c0a4a63c5c
+                </Text>
+                </Pressable>
             </View>
         </ImageBackground>
 
