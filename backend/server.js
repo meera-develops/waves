@@ -25,16 +25,19 @@ app.use(express.json()); // for parsing application/json
 
 app.get('/', (req, res) => {
     res.send('Hello World');
-    console.log('testing backend');
 })
 
 app.post('/auth-spotify', async (req, res) => {
     const { refresh_token, access_token, spotifyId, displayName, uri } = req.body;
-    console.log("here")
     try {
-        const newUser = new User({ spotifyId: spotifyId, displayName: displayName, refreshToken: refresh_token, accessToken: access_token, uri: uri });
-        await newUser.save();
-        res.status(201).json(newUser);
+        const user = await User.findOne({ spotifyId });
+        if (!user) {
+        // check if spotifyId already exists
+            const newUser = new User({ spotifyId: spotifyId, displayName: displayName, refreshToken: refresh_token, accessToken: access_token, uri: uri });
+            await newUser.save();
+        } 
+
+        res.status(201).json(user);
     } catch (error) {
         console.error(error)
         res.status(400).json({ message: error.message });

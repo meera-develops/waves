@@ -11,6 +11,7 @@ const Callback = () => {
     useEffect(() => {
         const handleCallback = async () => {
             try {
+                console.log('here')
                 // Send accessTok and refreshTok
                 const url = new URL(window.location.href);
                 const code = url.searchParams.get('code');
@@ -18,7 +19,7 @@ const Callback = () => {
 
                 const accessTok = response.access_token;
                 const refreshTok = response.refresh_token;
-
+                console.log(accessTok)
                 if (accessTok) {
                     localStorage.setItem('access_token', accessTok);
                     // Navigate to the home screen or wherever you want

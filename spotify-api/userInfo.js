@@ -53,7 +53,7 @@ export async function saveUser(accessTok, refreshTok, user) {
             uri: user.uri,
         }),
     });
-    console.log(saveUser);
+
     if (!saveUser.ok) {
         throw new Error('Error saving user');
     }

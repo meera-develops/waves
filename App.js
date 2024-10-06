@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import Callback from './screens/Callback';
+import Search from './screens/Search';
 import CurrentlyPlaying from './screens/CurrentlyPlaying';
 
 SplashScreen.preventAutoHideAsync();
@@ -21,6 +22,7 @@ const linking = {
       Home: 'home',
       Callback: 'callback', // Ensure the callback route matches your expectation
       CurrentlyPlaying: 'currently-playing',
+      Search: 'search'
       // Define other screens as needed
     },
   },
@@ -101,7 +103,16 @@ export default function App() {
           headerTintColor: "#2f4858",
           headerTintStyle: {fontWeight: "bold"},
         }} />
-        <Tab.Screen name="Callback" component={Callback} />
+        <Tab.Screen name="Callback" component={Callback}/>
+        <Tab.Screen name="Search" component={Search}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FCDDBC"
+          },
+          headerTintColor: "#2f4858",
+          headerTintStyle: {fontWeight: "bold"},
+        }} />
+
       </Tab.Navigator>
     </NavigationContainer>
   );
