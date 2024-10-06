@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
-import wave from '../assets/images/waveLight.png';
-
-
 
 const WelcomeScreen = () => {
     return (
@@ -13,16 +10,10 @@ const WelcomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
-                <Image 
-                    source={wave}
-                    style={styles.wave}
-                />
-                <Text style={styles.cta}>
-                    Ready to dive into the deep end?
-                </Text>
+
                 <TouchableOpacity onPress={() => userLogin()} style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>
-                    Log in
+                <Text style={styles.buttons}>
+                    Log in with Spotify
                 </Text>
                 </TouchableOpacity>
             </View>
@@ -46,43 +37,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     wave: {
-        position: 'absolute',
-        top: 2
-    },
-    cta: {
-        position: 'absolute',
-        top: 100,
-        color: '#2F4858',
-        fontWeight: 'bold',
-        letterSpacing: 3,
-        paddingHorizontal: 10,
-        textAlign: 'center',
-        fontFamily: 'lexend-era'
+        alignSelf: 'center'
     },
     buttonContainer: {
-        marginTop: 130,
-        padding: 10,
-        paddingHorizontal: 50,
-        borderRadius: 15,
-        borderWidth: 2,
-        borderColor: '#597ED6',
+        top: 140,
         backgroundColor: 'white',
-        // Shadow for iOS
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
-        // Elevation for Android
-        elevation: 5,
+        borderColor: '#c8acd6',
+        padding: 15,
+        marginHorizontal: 25,
+        marginVertical: 20,
+        alignItems: 'center',
+        borderRadius: 20,
+        borderWidth: 10,
       },
-      buttonText: {
-        color: '#000',
-        fontSize: 14,
-        fontFamily: 'metrophobic'
-        //fontWeight: 'bold'
+      buttons: {
+        color: '#433D8B',
+        fontSize: 18,
+        fontWeight: 'bold'
       }
 });
 
