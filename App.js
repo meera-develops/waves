@@ -8,10 +8,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import Callback from './screens/Callback';
-import Search from './screens/Search';
 import CurrentlyPlaying from './screens/CurrentlyPlaying';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 SplashScreen.preventAutoHideAsync();
+const Stack = createNativeStackNavigator();
 
 
 const linking = {
@@ -22,7 +23,6 @@ const linking = {
       Home: 'home',
       Callback: 'callback', // Ensure the callback route matches your expectation
       CurrentlyPlaying: 'currently-playing',
-      Search: 'search'
       // Define other screens as needed
     },
   },
@@ -95,32 +95,15 @@ export default function App() {
           headerTintColor: "#2f4858",
           headerTintStyle: { fontWeight: 'bold'},
         }} />
-        <Tab.Screen name="YOUR TIDE POOL" component={CurrentlyPlaying}
+        <Tab.Screen name="Currently Playing" component={CurrentlyPlaying}
         options={{
           headerStyle: {
             backgroundColor: "#FCDDBC"
           },
-          headerTitleStyle: {
-            color: "#fff",
-            fontFamily: 'lexend-era',
-            textTransform: 'uppercase',
-            letterSpacing: 5,
-            fontSize: 30,
-          },
+          headerTintColor: "#2f4858",
           headerTintStyle: {fontWeight: "bold"},
-          tabBarLabel: 'Listening'
         }} />
-        <Tab.Screen name="Callback" component={Callback}/>
-        <Tab.Screen name="Search" component={Search}
-        options={{
-          headerStyle: {
-            backgroundColor: "#FCDDBC"
-          },
-          headerShown: false,
-          //headerTintColor: "#2f4858",
-          //headerTintStyle: {fontWeight: "bold"},
-        }} />
-
+        <Tab.Screen name="Callback" component={Callback} />
       </Tab.Navigator>
     </NavigationContainer>
   );

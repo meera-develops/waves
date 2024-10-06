@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Pressable, ImageBackground, Image } from 'react
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
 import wave from '../assets/images/waveLight.png';
+import { useNavigation } from '@react-navigation/native';
 
 
 
