@@ -24,8 +24,8 @@ const CurrentlyPlaying = () => {
                 style={styles.searchImg}></Image>
               <Text style={styles.search}>Search</Text>
             </View>
-
           </View>
+          <Text style={styles.textTwo}>Your Ratings</Text>
 
         </ImageBackground>
       </SafeAreaView>
@@ -41,7 +41,8 @@ const CurrentlyPlaying = () => {
     textContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginLeft: 30
+      marginLeft: 30,
+      transform: [{ translateY: -240 }],
     },
     userPic: {
       position: 'relative',
@@ -55,6 +56,14 @@ const CurrentlyPlaying = () => {
       fontSize: 10,
       fontWeight: 'bold',
       fontFamily: 'lexend-era'
+    },
+    textTwo: {
+      marginLeft: 36,
+      color: 'black',
+      fontSize: 10,
+      fontWeight: 'bold',
+      fontFamily: 'lexend-era',
+      transform: [{ translateY: -200 }]
     },
     background: {
       flex: 1,
