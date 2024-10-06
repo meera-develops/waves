@@ -2,6 +2,9 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Pressable, ImageBackground, Image } from 'react-native';
 import userLogin from '../spotify-api/auth.js';
 import background from '../assets/images/bgImage.jpg';
+import wave from '../assets/images/waveLight.png';
+
+
 
 const WelcomeScreen = () => {
     return (
@@ -43,23 +46,43 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     wave: {
-        alignSelf: 'center'
+        position: 'absolute',
+        top: 2
+    },
+    cta: {
+        position: 'absolute',
+        top: 100,
+        color: '#2F4858',
+        fontWeight: 'bold',
+        letterSpacing: 3,
+        paddingHorizontal: 10,
+        textAlign: 'center',
+        fontFamily: 'lexend-era'
     },
     buttonContainer: {
-        top: 140,
+        marginTop: 130,
+        padding: 10,
+        paddingHorizontal: 50,
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor: '#597ED6',
         backgroundColor: 'white',
-        borderColor: '#c8acd6',
-        padding: 15,
-        marginHorizontal: 25,
-        marginVertical: 20,
-        alignItems: 'center',
-        borderRadius: 20,
-        borderWidth: 10,
+        // Shadow for iOS
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        // Elevation for Android
+        elevation: 5,
       },
-      buttons: {
-        color: '#433D8B',
-        fontSize: 18,
-        fontWeight: 'bold'
+      buttonText: {
+        color: '#000',
+        fontSize: 14,
+        fontFamily: 'metrophobic'
+        //fontWeight: 'bold'
       }
 });
 

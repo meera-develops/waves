@@ -2,26 +2,32 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Button, Alert, Pressable, Image} from 'react-native';
 import { ImageBackground } from 'react-native-web';
 import background from '../assets/images/bgImage.jpg';
-import userIcon from '../assets/images/userIcon.jpg'
+import userIcon from '../assets/images/userIcon.png'
 import CurrentlyPlaying from './CurrentlyPlaying';
+import { jsxDEV } from 'react/jsx-dev-runtime';
+import shell1 from '../assets/images/shell1.png';
+import sunset1 from '../assets/images/sunset1.png';
+import island1 from '../assets/images/island1.png';
+import { useNavigation } from '@react-navigation/native';
+
 
 /* To Do:
-1. Get user name to show up in text region
+1. Get user name to show up in text region (nln)
 2. Get buttons to redirect to other pages
-3. Add icons to buttons
-4. Add user icon to user name
+3. Fix alignment for username
 */
 
 const HomeScreen = () => {
+    const navigation = useNavigation();
     {/* This is where it's going to redirect to currently playing page and other pages: */}
     const buttonAction = () => {
-        Alert.alert("Notice:","This is where redirect to currently playing will occur");
+        navigation.navigate('CurrentlyPlaying');
     };
     const buttonAction2 = () => {
-        Alert.alert("Notice:", "This is where you can view your friends' tide pools")
+        Alert.alert("Friends page incomplete")
     };
     const buttonAction3 = () => {
-        Alert.alert("Notice:", "This is where you can discover more")
+        Alert.alert("Waiting on Discover page")
     };
 
     return (
@@ -30,27 +36,41 @@ const HomeScreen = () => {
             style={styles.background}
         >
             <View style={styles.container}>
-                <Image
-                    style = {styles.imgIcon}
-                    source={require('../assets/images/userIcon.jpg')}
-                />
-                <Text style={styles.accountText}>
-                    Sara_Songs
-                </Text>
+                <View style={styles.userInfo}>
+                    <Image
+                        style = {styles.imgIcon}
+                        source={userIcon}
+                    />
+                    <Text style={styles.accountText}>
+                        Sara_Songs
+                    </Text>
+                </View>
                 <Pressable onPress={() => buttonAction()} style={styles.buttonContainer}>
-                <Text style={styles.buttons}>
-                    VISIT YOUR TIDE POOL
-                </Text>
+                    <Text style={styles.buttons}>
+                        VISIT YOUR TIDE POOL
+                    </Text>
+                    <Image
+                        source={shell1}
+                        style={styles.buttonIcon}
+                    />
                 </Pressable>
                 <Pressable onPress={() => buttonAction2()} style={styles.buttonContainer}>
-                <Text style={styles.buttons}>
-                    FRIENDS' TIDE POOLS
-                </Text>
+                    <Text style={styles.buttons}>
+                        FRIENDS' TIDE POOLS
+                    </Text>
+                    <Image
+                        source={island1}
+                        style={styles.buttonIcon}
+                    />
                 </Pressable>
                 <Pressable onPress={() => buttonAction3()} style={styles.buttonContainer}>
-                <Text style={styles.buttons}>
-                    DISCOVER MORE
-                </Text>
+                    <Text style={styles.buttons}>
+                        DISCOVER MORE
+                    </Text>
+                    <Image
+                        source={sunset1}
+                        style={styles.buttonIcon}
+                    />
                 </Pressable>
             </View>
         </ImageBackground>
@@ -91,15 +111,25 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 4,
         elevation: 5,
+        position: 'relative',
       },
       buttons: {
         color: '#433D8B',
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'Metrophobic',
+    },
+    buttonIcon: {
+        width: 30,
+        height: 30,
+        position: 'absolute',
+        bottom: 5,
+        right: 5,
     },
     accountText: {
         width: '100%',
+        flexDirection: 'row',
         textAlign: 'left',
         color: "#2f4858",
         fontFamily: 'lexend-era',
@@ -107,11 +137,18 @@ const styles = StyleSheet.create({
         letterSpacing: 5,
         fontSize: 10,
         marginBottom: 20,
-        paddingLeft: 20,
+        paddingLeft: 95,
     },
     imgIcon: {
-        width:10,
-        height: 8,
+        width:30,
+        height:30,
+        marginRight: 5,
+    },
+    userInfo: {
+        flexDirection: 'row',
+        alignItems: 'left',
+        marginBottom: 20,
+        justifyContent: 'flex-start',
     },
 });
 

@@ -79,7 +79,7 @@ export default function App() {
         />
         <Tab.Screen name="Home" component={HomeScreen}
         options={{
-          title: "Waves",
+          title: "Home",
           headerStyle: {
             backgroundColor: "#fcddbc",
           },
