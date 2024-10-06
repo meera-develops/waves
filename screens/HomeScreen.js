@@ -11,12 +11,6 @@ import island1 from '../assets/images/island1.png';
 import { useNavigation } from '@react-navigation/native';
 
 
-/* To Do:
-1. Get user name to show up in text region (nln)
-2. Get buttons to redirect to other pages
-3. Fix alignment for username
-*/
-
 const HomeScreen = () => {
     const navigation = useNavigation();
     {/* This is where it's going to redirect to currently playing page and other pages: */}
